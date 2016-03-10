@@ -114,7 +114,9 @@ add_action( 'widgets_init', 'urbanrights_widgets_init' );
  * Enqueue scripts and styles.
  */
 function urbanrights_scripts() {
-	wp_enqueue_style( 'urbanrights-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'bootstrap-style', get_template_directory_uri(). '/bootstrap/css/bootstrap.min.css' );
+//	wp_enqueue_style( 'urbanrights-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'urbanrights-style', get_stylesheet_uri(),array('bootstrap-style') );
 
 	wp_enqueue_script( 'urbanrights-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
@@ -125,6 +127,21 @@ function urbanrights_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'urbanrights_scripts' );
+
+// load scripts for IE compatibility
+function hce_ie_scripts() {
+	echo "
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js'></script>
+	<script src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js'></script>
+	<![endif]-->
+	";
+}
+/* Load scripts for IE compatibility */
+add_action('wp_head','hce_ie_scripts');
 
 /**
  * Implement the Custom Header feature.
