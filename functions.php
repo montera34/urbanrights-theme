@@ -16,6 +16,19 @@ if ( ! function_exists( 'urbanrights_setup' ) ) :
  * as indicating support for post thumbnails.
  */
 function urbanrights_setup() {
+
+	// theme global vars
+	if (!defined('URBANRIGHTS_BLOGNAME'))
+	    define('URBANRIGHTS_BLOGNAME', get_bloginfo('name'));
+
+	if (!defined('URBANRIGHTS_BLOGDESC'))
+	    define('URBANRIGHTS_BLOGDESC', get_bloginfo('description','display'));
+
+	if (!defined('URBANRIGHTS_BLOGURL'))
+	    define('URBANRIGHTS_BLOGURL', esc_url( home_url( '/' ) ));
+
+	if (!defined('URBANRIGHTS_BLOGTHEME'))
+	    define('URBANRIGHTS_BLOGTHEME', get_bloginfo('template_directory'));
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
@@ -118,6 +131,7 @@ function urbanrights_scripts() {
 //	wp_enqueue_style( 'urbanrights-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'urbanrights-style', get_stylesheet_uri(),array('bootstrap-style') );
 
+	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri(). '/bootstrap/js/bootstrap.min.js',array('jquery'),true );
 	wp_enqueue_script( 'urbanrights-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'urbanrights-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
@@ -129,7 +143,7 @@ function urbanrights_scripts() {
 add_action( 'wp_enqueue_scripts', 'urbanrights_scripts' );
 
 // load scripts for IE compatibility
-function hce_ie_scripts() {
+function urbanrights_extra_scripts_styles() {
 	echo "
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -139,9 +153,14 @@ function hce_ie_scripts() {
 	<script src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js'></script>
 	<![endif]-->
 	";
+	if ( is_user_logged_in() ) {
+		echo "
+		<style>#top-navbar{margin-top: 32px;}</style>
+		";
+	}
 }
 /* Load scripts for IE compatibility */
-add_action('wp_head','hce_ie_scripts');
+add_action('wp_head','urbanrights_extra_scripts_styles');
 
 /**
  * Implement the Custom Header feature.

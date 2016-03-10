@@ -140,7 +140,7 @@
     "@container-md": "@container-desktop",
     "@container-large-desktop": "(1140px + @grid-gutter-width)",
     "@container-lg": "@container-large-desktop",
-    "@navbar-height": "50px",
+    "@navbar-height": "60px",
     "@navbar-margin-bottom": "@line-height-computed",
     "@navbar-border-radius": "@border-radius-base",
     "@navbar-padding-horizontal": "floor((@grid-gutter-width / 2))",
@@ -403,8 +403,11 @@
     "list-group.less",
     "panels.less",
     "responsive-embed.less",
-    "close.less"
+    "close.less",
+    "component-animations.less"
   ],
-  "js": [],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=e4f6537bd9f341070358"
+  "js": [
+    "collapse.js"
+  ],
+  "customizerUrl": "http://getbootstrap.com/customize/?id=159c597d85da526632d5"
 }

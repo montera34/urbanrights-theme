@@ -42,10 +42,33 @@
 			endif; ?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'urbanrights' ); ?></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-		</nav><!-- #site-navigation -->
+<nav id="top-navbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-collapse">
+				<span class="sr-only">Show/hide menu</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="<?php echo URBANRIGHTS_BLOGURL; ?>"><img src="<?php echo URBANRIGHTS_BLOGTHEME; ?>/images/ur.berlin.png" alt="<?php echo URBANRIGHTS_BLOGNAME; ?>" /></a>
+		</div>
+		<div class="collapse navbar-collapse" id="top-navbar-collapse">
+			<?php $location = "primary";
+			if ( has_nav_menu( $location ) ) {
+				$args = array(
+					'theme_location'  => $location,
+					'container' => false,
+					'menu_id' => 'navbar-second',
+					'menu_class' => 'nav navbar-nav navbar-right'
+				);
+				wp_nav_menu( $args );
+			} ?>
+		</div>
+	</div>
+</nav>
+
+
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">
