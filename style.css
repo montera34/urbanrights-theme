@@ -18,5 +18,36 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 */
 
-/* HEADER NAVBAR */
-.navbar-brand { padding: 8px 15px;}
+/* JOKERS */
+.row-littlemargin {
+	margin-left: -5px;
+	margin-right: -5px;
+}
+.row-littlemargin .col-xs-1, .row-littlemargin .col-sm-1, .row-littlemargin .col-md-1, .row-littlemargin .col-lg-1, .row-littlemargin .col-xs-2, .row-littlemargin .col-sm-2, .row-littlemargin .col-md-2, .row-littlemargin .col-lg-2, .row-littlemargin .col-xs-3, .row-littlemargin .col-sm-3, .row-littlemargin .col-md-3, .row-littlemargin .col-lg-3, .row-littlemargin .col-xs-4, .row-littlemargin .col-sm-4, .row-littlemargin .col-md-4, .row-littlemargin .col-lg-4, .row-littlemargin .col-xs-5, .row-littlemargin .col-sm-5, .row-littlemargin .col-md-5, .row-littlemargin .col-lg-5, .row-littlemargin .col-xs-6, .row-littlemargin .col-sm-6, .row-littlemargin .col-md-6, .row-littlemargin .col-lg-6, .row-littlemargin .col-xs-7, .row-littlemargin .col-sm-7, .row-littlemargin .col-md-7, .row-littlemargin .col-lg-7, .row-littlemargin .col-xs-8, .row-littlemargin .col-sm-8, .row-littlemargin .col-md-8, .row-littlemargin .col-lg-8, .row-littlemargin .col-xs-9, .row-littlemargin .col-sm-9, .row-littlemargin .col-md-9, .row-littlemargin .col-lg-9, .row-littlemargin .col-xs-10, .row-littlemargin .col-sm-10, .row-littlemargin .col-md-10, .row-littlemargin .col-lg-10, .row-littlemargin .col-xs-11, .row-littlemargin .col-sm-11, .row-littlemargin .col-md-11, .row-littlemargin .col-lg-11, .row-littlemargin .col-xs-12, .row-littlemargin .col-sm-12, .row-littlemargin .col-md-12, .row-littlemargin .col-lg-12 {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+/* NAVBARS */
+body { margin-bottom: 40px; }
+.navbar-brand { padding: 15px;}
+#bottom-navbar {
+	min-height: 40px;
+}
+#bottom-navbar .navbar-brand {
+	height: 36px;
+	padding: 2px 15px;
+}
+.navbar-toggle {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+/* DECLARATION MOSAIC */
+.post-type-archive-declarations .declarations iframe {
+	width: 100%;
+	height: auto;
+}
+.post-type-archive-declarations .declarations p {
+	margin-bottom: 5px;
+}

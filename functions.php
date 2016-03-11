@@ -155,12 +155,12 @@ function urbanrights_extra_scripts_styles() {
 	";
 	if ( is_user_logged_in() ) {
 		echo "
-		<style>#top-navbar{margin-top: 32px;}</style>
+		<style media='screen' type='text/css'>#top-navbar{margin-top: 32px;} html { margin-top: 132px!important;}</style>
 		";
 	}
 }
 /* Load scripts for IE compatibility */
-add_action('wp_head','urbanrights_extra_scripts_styles');
+add_action('wp_head','urbanrights_extra_scripts_styles',999);
 
 /**
  * Implement the Custom Header feature.
