@@ -30,7 +30,18 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 /* NAVBARS */
 body { margin-bottom: 40px; }
-.navbar-brand { padding: 15px;}
+#content { margin-top: 20px;}
+.navbar-brand { padding: 5px 15px;}
+#navbar-language li {
+	float: none;
+}
+#navbar-language li:first-child a {
+	padding: 20px 15px 0;
+}
+#navbar-language li:last-child a {
+	padding: 0 15px 20px;
+}
+
 #bottom-navbar {
 	min-height: 40px;
 }
@@ -42,6 +53,15 @@ body { margin-bottom: 40px; }
 	margin-top: 2px;
 	margin-bottom: 2px;
 }
+.navbar-nav > li > a {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	height: 40px;
+}
+.navbar-inverse .current-menu-item a {
+	color: #fff !important;
+}
+
 
 /* DECLARATION MOSAIC */
 .post-type-archive-declarations .declarations iframe {
@@ -50,4 +70,9 @@ body { margin-bottom: 40px; }
 }
 .post-type-archive-declarations .declarations p {
 	margin-bottom: 5px;
+}
+
+/* SESSION MEDIA LIST */
+.media-meta {
+	text-transform: uppercase;
 }

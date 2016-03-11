@@ -58,6 +58,7 @@ function urbanrights_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'urbanrights' ),
+		'lang' => esc_html__( 'Languages', 'urbanrights' ),
 	) );
 
 	/*
@@ -154,9 +155,10 @@ function urbanrights_extra_scripts_styles() {
 	<![endif]-->
 	";
 	if ( is_user_logged_in() ) {
-		echo "
-		<style media='screen' type='text/css'>#top-navbar{margin-top: 32px;} html { margin-top: 132px!important;}</style>
-		";
+		echo "<style media='screen' type='text/css'>#top-navbar{margin-top: 32px;} html { margin-top: 112px!important;}</style>";
+	} else {
+		echo "<style media='screen' type='text/css'>html { margin-top: 80px!important;}</style>";
+
 	}
 }
 /* Load scripts for IE compatibility */

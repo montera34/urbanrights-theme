@@ -42,7 +42,17 @@
 				$args = array(
 					'theme_location'  => $location,
 					'container' => false,
-					'menu_id' => 'navbar-second',
+					'menu_id' => 'navbar-primary',
+					'menu_class' => 'nav navbar-nav navbar-left'
+				);
+				wp_nav_menu( $args );
+			}
+			$location = "lang";
+			if ( has_nav_menu( $location ) ) {
+				$args = array(
+					'theme_location'  => $location,
+					'container' => false,
+					'menu_id' => 'navbar-language',
 					'menu_class' => 'nav navbar-nav navbar-right'
 				);
 				wp_nav_menu( $args );
@@ -50,7 +60,7 @@
 		</div>
 	</div>
 	</nav>
-
+	<h1 class='hide'></h1>
 </header><!-- #masthead -->
 
 <div id="content" class="container-fluid">
