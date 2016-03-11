@@ -14,13 +14,24 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'urbanrights' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'urbanrights' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'urbanrights' ), 'urbanrights', '<a href="http://montera34.com" rel="designer">Montera34</a>' ); ?>
-		</div><!-- .site-info -->
+<nav id="bottom-navbar" class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-footer">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bottom-navbar-collapse">
+				<span class="sr-only">Show/hide menu</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="http://urbanrights.org"><img src="<?php echo URBANRIGHTS_BLOGTHEME; ?>/images/ur.png" alt="The Universal Declaration of Urban Rights" /></a>
+		</div>
+		<div class="collapse navbar-collapse" id="bottom-navbar-collapse">
+			Here credits and exhibition info.
+		</div>
+	</div>
+</nav>
+
 	</footer><!-- #colophon -->
-</div><!-- #page -->
 
 <?php wp_footer(); ?>
 
