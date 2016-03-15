@@ -34,6 +34,9 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 body { margin-bottom: 40px; }
 #content { margin-top: 20px;}
 .navbar-brand { padding: 5px 15px;}
+.current-menu-item a {
+	font-weight: 600;
+}
 #navbar-language li {
 	float: none;
 }
@@ -44,13 +47,6 @@ body { margin-bottom: 40px; }
 	padding: 0 15px 20px;
 }
 
-#bottom-navbar {
-	min-height: 40px;
-}
-#bottom-navbar .navbar-brand {
-	height: 30px;
-	padding: 5px 15px;
-}
 .navbar-toggle {
 	margin-top: 2px;
 	margin-bottom: 2px;
@@ -58,12 +54,30 @@ body { margin-bottom: 40px; }
 .navbar-nav > li > a {
 	padding-top: 20px;
 	padding-bottom: 20px;
+}
+.navbar-text {
+	font-size: 0.9em;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.navbar-text a {
+	color: #fff;
+	font-weight: 600;
+}
+#bottom-navbar {
+	min-height: 40px;
+}
+#bottom-navbar .navbar-brand {
 	height: 40px;
+	padding: 5px 15px;
 }
-.navbar-inverse .current-menu-item a {
-	color: #fff !important;
+#bottom-navbar .navbar-nav li a {
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
-
+#colabora {
+	margin-left: 50px;
+}
 
 /* DECLARATION MOSAIC */
 .post-type-archive-declarations .declarations iframe {
