@@ -18,6 +18,8 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 */
 
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,400italic,600italic);
+
 /* JOKERS */
 .row-littlemargin {
 	margin-left: -5px;
@@ -46,8 +48,8 @@ body { margin-bottom: 40px; }
 	min-height: 40px;
 }
 #bottom-navbar .navbar-brand {
-	height: 36px;
-	padding: 2px 15px;
+	height: 30px;
+	padding: 5px 15px;
 }
 .navbar-toggle {
 	margin-top: 2px;
