@@ -31,8 +31,8 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 }
 
 /* NAVBARS */
-body { margin-bottom: 40px; }
-#content { margin-top: 20px;}
+body { margin-bottom: 41px; }
+#content { margin-top: 15px;}
 .navbar-brand { padding: 5px 15px;}
 .current-menu-item a {
 	font-weight: 600;
@@ -40,11 +40,11 @@ body { margin-bottom: 40px; }
 #navbar-language li {
 	float: none;
 }
-#navbar-language li:first-child a {
-	padding: 20px 15px 0;
-}
 #navbar-language li:last-child a {
 	padding: 0 15px 20px;
+}
+#navbar-language li:first-child a {
+	padding: 20px 15px 0;
 }
 
 .navbar-toggle {
@@ -57,8 +57,8 @@ body { margin-bottom: 40px; }
 }
 .navbar-text {
 	font-size: 0.9em;
-	margin-top: 5px;
-	margin-bottom: 5px;
+	margin-top: 2px;
+	margin-bottom: 2px;
 }
 .navbar-text a {
 	color: #fff;

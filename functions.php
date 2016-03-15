@@ -133,7 +133,10 @@ function urbanrights_scripts() {
 	wp_enqueue_style( 'urbanrights-style', get_stylesheet_uri(),array('bootstrap-style') );
 
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri(). '/bootstrap/js/bootstrap.min.js',array('jquery'),true );
-	wp_enqueue_script( 'urbanrights-js', get_template_directory_uri() . '/js/urbanrights.js', array('jquery'), true );
+	if ( is_post_type_archive( 'declarations' ) )
+		wp_enqueue_script( 'ur-declarations-js', get_template_directory_uri() . '/js/ur-declarations.js', array('jquery'), true );
+	if ( is_page_template( 'page-map.php' ) )
+		wp_enqueue_script( 'ur-spaces-js', get_template_directory_uri() . '/js/ur-spaces.js', array('jquery'), true );
 //	wp_enqueue_script( 'urbanrights-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
 //	wp_enqueue_script( 'urbanrights-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
@@ -156,9 +159,9 @@ function urbanrights_extra_scripts_styles() {
 	<![endif]-->
 	";
 	if ( is_user_logged_in() ) {
-		echo "<style media='screen' type='text/css'>#top-navbar{margin-top: 32px;} html { margin-top: 112px!important;}</style>";
+		echo "<style media='screen' type='text/css'>#top-navbar{margin-top: 32px;} html { margin-top: 113px!important;}</style>";
 	} else {
-		echo "<style media='screen' type='text/css'>html { margin-top: 80px!important;}</style>";
+		echo "<style media='screen' type='text/css'>html { margin-top: 81px!important;}</style>";
 
 	}
 }
