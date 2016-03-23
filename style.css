@@ -29,6 +29,29 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 	padding-left: 5px;
 	padding-right: 5px;
 }
+@media (min-width:755px) {
+.ur-2cols {
+	-webkit-column-count: 2;
+	-moz-column-count: 2;
+	column-count: 2;
+}
+.ur-3cols {
+	-webkit-column-count: 3;
+	-moz-column-count: 3;
+	column-count: 3;
+}
+}
+.ur-2cols p,
+.ur-3cols p,
+.ur-2cols ul,
+.ur-3cols ul,
+.ur-2cols ol,
+.ur-3cols ol {
+	margin: 0;
+}
+.section-space {
+	margin-bottom: 15px;
+}
 
 /* NAVBARS */
 body { margin-bottom: 41px; }
@@ -40,22 +63,65 @@ body { margin-bottom: 41px; }
 #navbar-language li {
 	float: none;
 }
-#navbar-language li:last-child a {
-	padding: 0 15px 20px;
-}
-#navbar-language li:first-child a {
-	padding: 20px 15px 0;
-}
-
 .navbar-toggle {
 	margin-top: 2px;
 	margin-bottom: 2px;
 }
-.navbar-nav > li > a {
-	padding-top: 20px;
-	padding-bottom: 20px;
+
+@media (min-width:755px) {
+	#navbar-language li:last-child a {
+		padding: 0 15px 5px;
+	}
+	#navbar-language li:first-child a {
+		padding: 5px 15px 0;
+	}
+#navbar-primary > li:before {
+	content: "|";
+	float: left;
+	color: #fff;
+	padding: 25px 0;
+	line-height: 30px;
+	font-size: 20px;
+}
+#navbar-primary > li:first-child:before {
+	content: none;
+}
+#navbar-primary > li > a {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#navbar-primary > li > a:after {
+	transition: all 0.2s ease 0s;
+	position: absolute;
+	bottom: 5px;
+	left: 50%;
+	display: block;
+	overflow: hidden;
+	margin-left: 0px;
+	width: 0px;
+	height: 0px;
+	background: #FFF none repeat scroll 0% 0%;
+	content: "-";
+	text-indent: -999em;
+	border-radius: 7px;
+}
+#navbar-primary > li.current-menu-item > a:after,
+#navbar-primary > li > a:hover:after,
+#navbar-primary > ul > li:hover > a:after {
+  bottom: 0px;
+  height: 2px;
+  width: 40px;
+  margin-left: -20px;
+  margin-top: -2px;
+}
+#bottom-navbar-collapse .navbar-text {
+	margin-left: 50px;
+}
 }
 .navbar-text {
+	float: left;
 	font-size: 0.9em;
 	margin-top: 2px;
 	margin-bottom: 2px;
@@ -75,20 +141,22 @@ body { margin-bottom: 41px; }
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
-#colabora {
-	margin-left: 50px;
+
+@media (max-width:754px) {
+#bottom-navbar-collapse .navbar-nav {
+	margin-top: 30px;
+}
 }
 
 /* DECLARATION MOSAIC */
+.page-template-page-declarations iframe,
+.home .declarations iframe,
 .post-type-archive-declarations .declarations iframe {
 	width: 100%;
 	height: auto;
 }
+.page-template-page-declarations .declarations p,
+.home .declarations p,
 .post-type-archive-declarations .declarations p {
 	margin-bottom: 5px;
-}
-
-/* SESSION MEDIA LIST */
-.media-meta {
-	text-transform: uppercase;
 }

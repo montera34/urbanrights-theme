@@ -34,7 +34,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="<?php echo URBANRIGHTS_BLOGURL; ?>"><img src="<?php echo URBANRIGHTS_BLOGTHEME; ?>/images/ur.berlin.png" alt="<?php echo URBANRIGHTS_BLOGNAME; ?>" /></a>
+			<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' )); ?>"><img src="<?php echo URBANRIGHTS_BLOGTHEME; ?>/images/ur.berlin.png" alt="<?php echo URBANRIGHTS_BLOGNAME; ?>" /></a>
 		</div>
 		<div class="collapse navbar-collapse" id="top-navbar-collapse">
 			<?php $location = "primary";
@@ -63,4 +63,4 @@
 	<h1 class='hide'></h1>
 </header><!-- #masthead -->
 
-<div id="content" class="container-fluid">
+<div id="content" <?php urbanrights_container_class(); ?>>
