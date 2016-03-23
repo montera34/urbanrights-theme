@@ -85,7 +85,7 @@ body { margin-bottom: 41px; }
 	margin-bottom: 2px;
 }
 
-@media (min-width:755px) {
+@media (min-width:992px) {
 	#navbar-language li:last-child a {
 		padding: 0 15px 5px;
 	}
@@ -159,7 +159,7 @@ body { margin-bottom: 41px; }
 	padding-bottom: 5px;
 }
 
-@media (max-width:754px) {
+@media (max-width:991px) {
 #bottom-navbar-collapse .navbar-nav {
 	margin-top: 30px;
 }

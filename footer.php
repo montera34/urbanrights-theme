@@ -15,7 +15,7 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 <nav id="bottom-navbar" class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="navbar-footer">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bottom-navbar-collapse">
 				<span class="sr-only">Show/hide menu</span>

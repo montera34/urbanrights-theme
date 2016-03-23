@@ -26,7 +26,7 @@
 <header id="masthead" class="site-header" role="banner">
 
 	<nav id="top-navbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-collapse">
 				<span class="sr-only">Show/hide menu</span>

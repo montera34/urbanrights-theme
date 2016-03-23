@@ -32,7 +32,7 @@
     "@line-height-base": "1.428571429",
     "@line-height-computed": "floor((@font-size-base * @line-height-base))",
     "@headings-font-family": "inherit",
-    "@headings-font-weight": "500",
+    "@headings-font-weight": "600",
     "@headings-line-height": "1.1",
     "@headings-color": "inherit",
     "@icon-font-path": "\"../fonts/\"",
@@ -48,9 +48,9 @@
     "@padding-xs-horizontal": "5px",
     "@line-height-large": "1.3333333",
     "@line-height-small": "1.5",
-    "@border-radius-base": "4px",
-    "@border-radius-large": "6px",
-    "@border-radius-small": "3px",
+    "@border-radius-base": "0",
+    "@border-radius-large": "0",
+    "@border-radius-small": "0",
     "@component-active-color": "#fff",
     "@component-active-bg": "@brand-primary",
     "@caret-width-base": "4px",
@@ -132,7 +132,7 @@
     "@screen-md-max": "(@screen-lg-min - 1)",
     "@grid-columns": "12",
     "@grid-gutter-width": "30px",
-    "@grid-float-breakpoint": "@screen-sm-min",
+    "@grid-float-breakpoint": "@screen-md-min",
     "@grid-float-breakpoint-max": "(@grid-float-breakpoint - 1)",
     "@container-tablet": "(720px + @grid-gutter-width)",
     "@container-sm": "@container-tablet",
@@ -409,5 +409,5 @@
   "js": [
     "collapse.js"
   ],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=4d4b5b89ae529cae5967"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=43adf62ef454cf83ec82"
 }
