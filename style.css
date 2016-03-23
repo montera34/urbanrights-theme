@@ -49,8 +49,25 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 .ur-3cols ol {
 	margin: 0;
 }
+.main-space {
+	margin-top: 45px;
+}
 .section-space {
 	margin-bottom: 15px;
+}
+.page-content img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+#main a:link {
+	text-decoration: underline;
+}
+#main a:hover {
+	text-decoration: none;
+}
+.text-muted a {
+	color: inherit;
 }
 
 /* NAVBARS */
@@ -159,4 +176,23 @@ body { margin-bottom: 41px; }
 .home .declarations p,
 .post-type-archive-declarations .declarations p {
 	margin-bottom: 5px;
+}
+
+/* SESSIONS PAGE */
+.archive-tit,
+.media-meta,
+.media-heading {
+	margin: 0;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 1.1em;
+}
+.media-meta,
+.media-heading {
+	display: inline;
+
+}
+.session-subtitle:after,
+.media-meta time:after {
+	content: " - ";
 }

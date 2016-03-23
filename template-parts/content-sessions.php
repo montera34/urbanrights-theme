@@ -8,10 +8,13 @@
  */
 //global $count;
 //$count++;
-$subtitle = get_post_meta($post->ID,'session-subtitle',true);
-$date = date( 'Y\/m\/d',get_post_meta($post->ID,'session-date',true) );
-$date_human = date( 'd\/m\/Y',get_post_meta($post->ID,'session-date',true) );
 $classes = array('media');
+$subtitle = get_post_meta($post->ID,'session-subtitle',true);
+$session_time = get_post_meta($post->ID,'session-date',true);
+$date = date( 'Y\/m\/d',$session_time );
+$date_human = date( 'd\/m\/Y',$session_time );
+if ( $session_time < time() )
+	$classes[] = "text-muted";
 $item_perma = get_permalink();
 if ( has_post_thumbnail() ) {
 	$item_img = "
@@ -22,8 +25,12 @@ if ( has_post_thumbnail() ) {
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class($classes); ?>>
 	<div class="media-body">
-		<h3 class="media-heading"><?php the_title(); ?></h3>
-		<div class='media-meta'><strong><time datetime="<?php echo $date ?>"><?php echo $date_human ?></time></strong> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> <?php echo $subtitle; ?></div>
+		<header>
+			<div class='media-meta'>
+				<span class="session-subtitle"><?php echo $subtitle; ?></span> <time datetime="<?php echo $date ?>"><?php echo $date_human ?></time>
+			</div>
+			<h3 class="media-heading"><?php the_title(); ?></h3>
+		</header>
 		<?php the_content(); ?>
 	</div>
 	<?php echo $item_img ?>
