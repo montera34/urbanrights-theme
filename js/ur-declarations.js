@@ -10,7 +10,12 @@
 // depending on window width
 function ur_featured_video_h() {
 	var container_w = $('#content').width() - 30;
-	var video = $(".declaration-featured iframe");
+console.log($(window).width());
+	if ( $(window).width() < 755 ) {
+		var video = $(".declarations iframe");
+	} else {
+		var video = $(".declaration-featured iframe");
+	}
 	var video_w = video.attr("width");
 	var video_h = video.attr("height");
 	var video_h_new = container_w * video_h / video_w;
