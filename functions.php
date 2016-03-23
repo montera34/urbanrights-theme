@@ -90,6 +90,7 @@ function urbanrights_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+	add_post_type_support( 'page', 'excerpt' );
 }
 endif;
 add_action( 'after_setup_theme', 'urbanrights_setup' );
@@ -129,11 +130,10 @@ add_action( 'widgets_init', 'urbanrights_widgets_init' );
  */
 function urbanrights_scripts() {
 	wp_enqueue_style( 'bootstrap-style', get_template_directory_uri(). '/bootstrap/css/bootstrap.min.css' );
-//	wp_enqueue_style( 'urbanrights-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'urbanrights-style', get_stylesheet_uri(),array('bootstrap-style') );
 
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri(). '/bootstrap/js/bootstrap.min.js',array('jquery'),true );
-	if ( is_post_type_archive( 'declarations' ) )
+	if ( is_post_type_archive( 'declarations' ) || is_home() || is_page_template('page-declarations.php') )
 		wp_enqueue_script( 'ur-declarations-js', get_template_directory_uri() . '/js/ur-declarations.js', array('jquery'), true );
 	if ( is_page_template( 'page-map.php' ) )
 		wp_enqueue_script( 'ur-spaces-js', get_template_directory_uri() . '/js/ur-spaces.js', array('jquery'), true );
@@ -168,6 +168,14 @@ function urbanrights_extra_scripts_styles() {
 /* Load scripts for IE compatibility */
 add_action('wp_head','urbanrights_extra_scripts_styles',999);
 
+function urbanrights_favicon() {
+	echo "
+	<link rel='shortcut icon' href='".URBANRIGHTS_BLOGTHEME."/images/favicon.png' />
+	";
+	return;
+}
+add_action('wp_head','urbanrights_favicon');
+
 // custom loops for each template
 function urbanrights_custom_args_for_loops( $query ) {
 	if ( $query->query_vars['post_type'] == 'declarations' && $query->is_main_query() ) { 
@@ -175,9 +183,23 @@ function urbanrights_custom_args_for_loops( $query ) {
 		$query->set( 'order','ASC');
 		$query->set( 'orderby','menu_order');
 	}
+	elseif ( $query->query_vars['post_type'] == 'sessions' && $query->is_main_query() ) { 
+		$query->set( 'nopaging','true');
+		$query->set( 'orderby','meta_value_num');
+		$query->set( 'meta_key','session-date');
+		$query->set( 'order','ASC');
+	}
 	return $query;
 } // END custom args for loops
 add_filter( 'pre_get_posts', 'urbanrights_custom_args_for_loops' );
+
+function urbanrights_container_class() {
+	$class = "class='container'";
+	if ( is_page_template('page-map.php') )
+		$class = "class='container-fluid'";
+	echo $class;
+	return;
+}
 
 /**
  * Implement the Custom Header feature.
