@@ -11,7 +11,7 @@
 
 	<header class="archive-header section-space">
 		<?php the_title( '<h1 class="hidden">', '</h1>' ); ?>
-		<div class="ur-2cols"><?php the_content(); ?></div>
+		<div class="ur-2cols"><?php echo apply_filters('the_content',get_the_excerpt()); ?></div>
 	</header><!-- .entry-header -->
 
 
