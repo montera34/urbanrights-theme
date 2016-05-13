@@ -40,7 +40,7 @@ wp_reset_postdata();
 			<?php endif;
 
 			if ( $footer != '' )
-				echo "<footer class='row'><div class='col-md-6'>".apply_filters('the_content',$footer)."</div></footer>";
+				echo "<div class='row'><div class='col-md-6'>".apply_filters('the_content',$footer)."</div></div>";
 			?>
 
 		</main><!-- #main -->

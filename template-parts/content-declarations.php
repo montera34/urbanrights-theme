@@ -17,10 +17,20 @@ if ( $post->menu_order == '0' ) {
 } else {
 	$declaration_classes = array('col-md-3 col-sm-4');
 }
+// tags
+$taxs = array(
+	array("protect","To protect"),
+	array("eradicate","To eradicate"),
+	array("initiate","To initiate")
+);
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class($declaration_classes); ?>>
 	<?php echo apply_filters('the_content',$video_url); ?>
+	<dl class="declaration-tags">
+		<?php foreach ( $taxs as $t ) { the_terms( $post->ID, $t[0], "<dt>".$t[1]."</dt><dd>",", ","</dd>" ); } ?>
+
+	</dl>
 </article><!-- #post-## -->
 <?php
 if ( $count == 4 || $count == 0 ) {

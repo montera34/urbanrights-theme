@@ -133,7 +133,7 @@ function urbanrights_scripts() {
 	wp_enqueue_style( 'urbanrights-style', get_stylesheet_uri(),array('bootstrap-style') );
 
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri(). '/bootstrap/js/bootstrap.min.js',array('jquery'),true );
-	if ( is_post_type_archive( 'declarations' ) || is_home() || is_page_template('page-declarations.php') )
+	if ( is_post_type_archive( 'declarations' ) || is_home() || is_page_template('page-declarations.php') || is_tax(array('protect','eradicate','initiate')) )
 		wp_enqueue_script( 'ur-declarations-js', get_template_directory_uri() . '/js/ur-declarations.js', array('jquery'), true );
 	if ( is_page_template( 'page-map.php' ) )
 		wp_enqueue_script( 'ur-spaces-js', get_template_directory_uri() . '/js/ur-spaces.js', array('jquery'), true );
