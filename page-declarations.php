@@ -28,7 +28,7 @@ wp_reset_postdata();
 			$archive = new WP_Query( $args );
 
 			if ( $archive->have_posts() ) : ?>
-			<div class="row row-littlemargin">
+			<div class="row row-littlemargin section-space">
 				<?php $count = 0;
 				$tablet_count = 0;
 				while ( $archive->have_posts() ) {

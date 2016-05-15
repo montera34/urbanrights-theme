@@ -20,9 +20,9 @@ if ( $post->menu_order == '0' ) {
 }
 // tags
 $taxs = array(
-	array("protect","To protect"),
-	array("eradicate","To eradicate"),
-	array("initiate","To initiate")
+	array("protect",__("To Protect","urbanrights")),
+	array("initiate",__("To Introduce","urbanrights")),
+	array("eradicate",__("To Eradicate","urbanrights"))
 );
 ?>
 
