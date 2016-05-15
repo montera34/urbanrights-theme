@@ -7,6 +7,7 @@
  * @package Urban_Rights
  */
 global $count;
+global $tablet_count;
 $count++;
 $tablet_count++;
 $video_url = get_post_meta($post->ID,'declaration-video-url',true);
