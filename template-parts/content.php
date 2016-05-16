@@ -8,7 +8,7 @@
  */
 
 $classes = array('row');
-if ( has_post_thumbnail() && !is_single() ) {
+if ( has_post_thumbnail() ) {
 	$item_img = "
 	<figure class='post-featured-img'>"
 		.get_the_post_thumbnail($post->ID,'medium',array('class' => 'img-responsive')).
@@ -17,7 +17,7 @@ if ( has_post_thumbnail() && !is_single() ) {
 
 <article id="post-<?php the_ID(); ?>" <?php post_class($classes); ?>>
 
-	<header class=" col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-4">
+	<header class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-4">
 		<?php if ( is_single() ) {
 			the_title( '<h1 class="entry-title">', '</h1>' );
 		} else {

@@ -10,14 +10,14 @@
 get_header(); ?>
 
 	<div id="primary" class="row">
-		<main id="main" class="col-md-6" role="main">
+		<main id="main" class="col-sm-12" role="main">
 
 		<?php
 		while ( have_posts() ) : the_post();
 
 			get_template_part( 'template-parts/content', get_post_format() );
 
-			the_post_navigation();
+			//the_post_navigation();
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :

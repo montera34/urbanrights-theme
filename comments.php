@@ -20,8 +20,8 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area">
-
+<div id="comments" class="comments-area row">
+	<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-4">
 	<?php
 	// You can start editing here -- including this comment!
 	if ( have_comments() ) : ?>
@@ -47,7 +47,7 @@ if ( post_password_required() ) {
 		</nav><!-- #comment-nav-above -->
 		<?php endif; // Check for comment navigation. ?>
 
-		<ol class="comment-list">
+		<ol class="comment-list list-unstyled">
 			<?php
 				wp_list_comments( array(
 					'style'      => 'ol',
@@ -82,4 +82,5 @@ if ( post_password_required() ) {
 	comment_form();
 	?>
 
+	</div>
 </div><!-- #comments -->
