@@ -231,9 +231,45 @@ body { margin-bottom: 41px; }
 .media-meta,
 .media-heading {
 	display: inline;
-
 }
 .session-subtitle:after,
 .media-meta time:after {
 	content: " - ";
+}
+
+/* NEWS PAGE */
+article.post {
+	margin-bottom: 100px;
+}
+.entry-title {
+	margin-top: 0;
+}
+.post h1 a,
+.post h2 a,
+.post-meta a {
+	text-decoration: none !important;
+}
+.post-meta {
+	text-align: right;
+}
+.post-meta .glyphicon {
+	float: right;
+	margin-left: 5px;
+}
+.post-meta a:hover {
+	text-decoration: underline !important;
+}
+.post-featured-img {
+	margin-top: 1em;
+}
+.post-featured-img img {
+	float: right;
+}
+/* editor styles*/
+.post h1,
+.post h2 {
+	font-size: 20px;
+}
+.post h3 {
+	font-size: 17px;
 }

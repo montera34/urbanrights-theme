@@ -7,51 +7,45 @@
  * @package Urban_Rights
  */
 
-$classes = array('media');
+$classes = array('row');
 if ( has_post_thumbnail() && !is_single() ) {
 	$item_img = "
-	<div class='media-left media-top'>"
-		.get_the_post_thumbnail($post->ID,$item_img_size,array('class' => 'media-object')).
-	"</div>";
-} else { $item_img = ""; }
-?>
+	<figure class='post-featured-img'>"
+		.get_the_post_thumbnail($post->ID,'medium',array('class' => 'img-responsive')).
+	"</figure>";
+} else { $item_img = ""; } ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class($classes); ?>>
-	<?php echo $item_img ?>
-	<div class="media-body">
-		<header class="media-heading">
-			<?php
-			if ( is_single() ) {
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			} else {
-				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-			}
 
-			if ( 'post' === get_post_type() ) : ?>
-			<div class="media-meta">
-				<?php urbanrights_posted_on(); ?>
-			</div><!-- .entry-meta -->
-			<?php endif; ?>
-		</header><!-- .media-heading -->
+	<header class=" col-md-5 col-md-offset-4 col-sm-7 col-sm-offset-4">
+		<?php if ( is_single() ) {
+			the_title( '<h1 class="entry-title">', '</h1>' );
+		} else {
+			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+		} ?>
+	</header>
 
-		<div class="media-content">
-			<?php
-			the_content( sprintf(
-				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'urbanrights' ), array( 'span' => array( 'class' => array() ) ) ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			) );
+	<div class="post-content col-md-5 col-md-push-4 col-sm-7 col-sm-push-4">
 
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'urbanrights' ),
-				'after'  => '</div>',
-			) );
-			?>
-		</div><!-- .media-content -->
+		<?php the_content( sprintf(
+			/* translators: %s: Name of current post. */
+			wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'urbanrights' ), array( 'span' => array( 'class' => array() ) ) ),
+			the_title( '<span class="screen-reader-text">"', '"</span>', false )
+		) );
 
-		<footer class="media-footer">
+		wp_link_pages( array(
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'urbanrights' ),
+			'after'  => '</div>',
+		) );
+		?>
+	</div><!-- .post-content -->
+
+	<?php if ( 'post' === get_post_type() ) : ?>
+		<footer class="post-meta col-md-4 col-md-pull-5 col-sm-4 col-sm-pull-7">
+			<?php urbanrights_posted_on(); ?>
 			<?php urbanrights_entry_footer(); ?>
-		</footer><!-- .entry-footer -->
+			<?php echo $item_img ?>
+		</footer><!-- .entry-meta -->
+	<?php endif; ?>
 
-	</div><!-- .media-body -->
 </article><!-- #post-## -->

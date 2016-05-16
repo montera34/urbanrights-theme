@@ -12,7 +12,7 @@ if ( ! function_exists( 'urbanrights_posted_on' ) ) :
  * Prints HTML with meta information for the current post-date/time and author.
  */
 function urbanrights_posted_on() {
-	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+	$time_string = '<time class="published updated" datetime="%1$s">%2$s</time>';
 //	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 //		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
 //	}
@@ -24,17 +24,11 @@ function urbanrights_posted_on() {
 		esc_html( get_the_modified_date() )
 	);
 
-	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'urbanrights' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-	);
+	$posted_on = '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>';
 
-	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'urbanrights' ),
-		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-	);
+	$byline = '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>';
 
-	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+	echo '<div class="entry-date"><span class="glyphicon glyphicon-certificate"></span>' . $posted_on . '</div><div class="entry-author"><span class="glyphicon glyphicon-user"></span> ' . $byline . '</div>'; // WPCS: XSS OK.
 
 }
 endif;
@@ -44,36 +38,36 @@ if ( ! function_exists( 'urbanrights_entry_footer' ) ) :
  * Prints HTML with meta information for the categories, tags and comments.
  */
 function urbanrights_entry_footer() {
+
+	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	// Hide category and tag text for pages.
 	if ( 'post' === get_post_type() ) {
-		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( esc_html__( ', ', 'urbanrights' ) );
+		$categories_list = get_the_category_list( ', ' );
 		if ( $categories_list && urbanrights_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'urbanrights' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+			echo '<div class="cat-links"><span class="glyphicon glyphicon-folder-open"></span>'.$categories_list.'</div>';
 		}
 
-		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'urbanrights' ) );
+		$tags_list = get_the_tag_list( ', ' );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'urbanrights' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			echo '<div class="tags-links"><span class="glyphicon glyphicon-tags"></span>'.$tags_list.'</div>';
 		}
 	}
 
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-		echo '<span class="comments-link">';
+		echo '<div class="entry-comments-link"><span class="glyphicon glyphicon-comment"></span>';
 		comments_popup_link( esc_html__( 'Leave a comment', 'urbanrights' ), esc_html__( '1 Comment', 'urbanrights' ), esc_html__( '% Comments', 'urbanrights' ) );
-		echo '</span>';
+		 echo '</div>';
 	}
 
-	edit_post_link(
-		sprintf(
-			/* translators: %s: Name of current post */
-			esc_html__( 'Edit %s', 'urbanrights' ),
-			the_title( '<span class="screen-reader-text">"', '"</span>', false )
-		),
-		'<span class="edit-link">',
-		'</span>'
-	);
+//	edit_post_link(
+//		sprintf(
+//			/* translators: %s: Name of current post */
+//			esc_html__( 'Edit %s', 'urbanrights' ),
+//			the_title( '<span class="screen-reader-text">"', '"</span>', false )
+//		),
+//		'<span class="edit-link">',
+//		'</span>'
+//	);
 }
 endif;
 
