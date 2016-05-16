@@ -33,7 +33,17 @@ get_header(); ?>
 				get_template_part( 'template-parts/content', get_post_format() );
 
 			endwhile; ?>
-			<?php the_posts_navigation(); ?>
+
+			<?php // the_posts_navigation(); ?>
+			<nav class="navigation posts-navigation row" role="navigation">
+				<div class="nav-links col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-4">
+					<div class="row">
+					<div class="col-xs-6 nav-next nav-link">
+						<?php next_posts_link( sprintf(__('%s Older posts','urbanrights'),'<span class="glyphicon glyphicon-menu-left"></span>' ) ); ?></div>
+						<div class="col-xs-6 nav-prev nav-link text-right"><?php previous_posts_link( sprintf(__('Newer posts %s','urbanrights'),'<span class="glyphicon glyphicon-menu-right"></span>') ); ?></div>
+					</div>
+				</div>
+			</nav>
 
 		</main><!-- #main -->
 

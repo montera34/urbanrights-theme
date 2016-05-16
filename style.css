@@ -273,6 +273,28 @@ article.post {
 .post h3 {
 	font-size: 17px;
 }
+.post figure {
+	max-width: 100%;
+}
 .post img {
 	max-width: 100%;
+	height: auto !important;
+}
+.wp-caption {
+	margin-bottom: 1em;
+}
+.wp-caption-text {
+	color: #666;
+	line-height: 1.1em;
+	margin-top: 5px;
+}
+
+/* NAV PAGES LINKS */
+.posts-navigation {
+	margin-bottom: 50px;
+}
+.posts-navigation .nav-link a {
+	text-decoration: none !important;
+	text-transform: uppercase;;
+	font-weight: bold;
 }
