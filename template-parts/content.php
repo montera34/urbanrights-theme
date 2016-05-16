@@ -17,7 +17,7 @@ if ( has_post_thumbnail() && !is_single() ) {
 
 <article id="post-<?php the_ID(); ?>" <?php post_class($classes); ?>>
 
-	<header class=" col-md-5 col-md-offset-4 col-sm-7 col-sm-offset-4">
+	<header class=" col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-4">
 		<?php if ( is_single() ) {
 			the_title( '<h1 class="entry-title">', '</h1>' );
 		} else {
@@ -25,7 +25,7 @@ if ( has_post_thumbnail() && !is_single() ) {
 		} ?>
 	</header>
 
-	<div class="post-content col-md-5 col-md-push-4 col-sm-7 col-sm-push-4">
+	<div class="post-content col-md-6 col-md-push-3 col-sm-8 col-sm-push-4">
 
 		<?php the_content( sprintf(
 			/* translators: %s: Name of current post. */
@@ -41,7 +41,7 @@ if ( has_post_thumbnail() && !is_single() ) {
 	</div><!-- .post-content -->
 
 	<?php if ( 'post' === get_post_type() ) : ?>
-		<footer class="post-meta col-md-4 col-md-pull-5 col-sm-4 col-sm-pull-7">
+		<footer class="post-meta col-md-3 col-md-pull-6 col-sm-4 col-sm-pull-8">
 			<?php urbanrights_posted_on(); ?>
 			<?php urbanrights_entry_footer(); ?>
 			<?php echo $item_img ?>

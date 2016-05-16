@@ -15,7 +15,7 @@
 get_header(); ?>
 
 	<div id="primary" class="row">
-		<main id="main" class="col-md-6" role="main">
+		<main id="main" class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1" role="main">
 
 			<?php
 			while ( have_posts() ) : the_post();

@@ -273,3 +273,6 @@ article.post {
 .post h3 {
 	font-size: 17px;
 }
+.post img {
+	max-width: 100%;
+}
