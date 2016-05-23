@@ -74,6 +74,11 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 body { margin-bottom: 41px; }
 #content { margin-top: 15px;}
 .navbar-brand { padding: 5px 15px;}
+.single-sessions #navbar-primary > li.menu-item-sessions > a,
+.single-post #navbar-primary > li.menu-item-news > a,
+.tax-initiate #navbar-primary > li.menu-item-declarations > a,
+.tax-eradicate #navbar-primary > li.menu-item-declarations > a,
+.tax-protect #navbar-primary > li.menu-item-declarations > a,
 .current-menu-item a {
 	font-weight: 600;
 }
@@ -124,6 +129,7 @@ body { margin-bottom: 41px; }
 	text-indent: -999em;
 	border-radius: 7px;
 }
+.single-sessions #navbar-primary > li.menu-item-sessions > a:after,
 .single-post #navbar-primary > li.menu-item-news > a:after,
 .tax-initiate #navbar-primary > li.menu-item-declarations > a:after,
 .tax-eradicate #navbar-primary > li.menu-item-declarations > a:after,
@@ -222,20 +228,32 @@ body { margin-bottom: 41px; }
 
 /* SESSIONS PAGE */
 .archive-tit,
-.media-meta,
-.media-heading {
+.session-meta,
+.session-heading {
 	margin: 0;
 	font-size: 20px;
 	font-weight: 600;
 	line-height: 1.1em;
 }
-.media-meta,
-.media-heading {
+.session-heading a {
+	text-decoration: none !important;
+}
+.session-meta,
+.session-heading {
 	display: inline;
 }
 .session-subtitle:after,
-.media-meta time:after {
+.session-meta time:after {
 	content: " - ";
+}
+.ur-sessions-list a {
+	text-decoration: none !important;
+}
+.ur-sessions-list a:hover {
+	text-decoration: underline !important;
+}
+.ur-sessions-list .current-session {
+	font-weight: 600;	
 }
 
 /* NEWS PAGE */
