@@ -46,17 +46,18 @@
 					'menu_class' => 'nav navbar-nav navbar-left'
 				);
 				wp_nav_menu( $args );
-			}
-			$location = "lang";
+			} ?>
+			<?php $location = "secondary";
 			if ( has_nav_menu( $location ) ) {
 				$args = array(
 					'theme_location'  => $location,
 					'container' => false,
-					'menu_id' => 'navbar-language',
+					'menu_id' => 'navbar-secondary',
 					'menu_class' => 'nav navbar-nav navbar-right'
 				);
 				wp_nav_menu( $args );
-			} ?>
+			}
+			?>
 		</div>
 	</div>
 	</nav>

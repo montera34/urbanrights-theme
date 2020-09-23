@@ -31,6 +31,16 @@
 			<ul class="nav navbar-nav navbar-left">
 				<li>Here cooperators logos.</li>
 			</ul>
+			<?php $location = "lang";
+			if ( has_nav_menu( $location ) ) {
+				$args = array(
+					'theme_location'  => $location,
+					'container' => false,
+					'menu_id' => 'navbar-language',
+					'menu_class' => 'nav navbar-nav navbar-right'
+				);
+				wp_nav_menu( $args );
+			} ?>
 		</div>
 	</div>
 </nav>

@@ -18,7 +18,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 */
 
-@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,400italic,600italic);
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* JOKERS */
 .row-littlemargin {
@@ -82,21 +82,12 @@ body { margin-bottom: 41px; }
 .current-menu-item a {
 	font-weight: 600;
 }
-#navbar-language li {
-	float: none;
-}
 .navbar-toggle {
 	margin-top: 2px;
 	margin-bottom: 2px;
 }
 
 @media (min-width:992px) {
-	#navbar-language li:last-child a {
-		padding: 0 15px 5px;
-	}
-	#navbar-language li:first-child a {
-		padding: 5px 15px 0;
-	}
 #navbar-primary > li:before {
 	content: "|";
 	float: left;
@@ -164,9 +155,8 @@ body { margin-bottom: 41px; }
 	height: 40px;
 	padding: 5px 15px;
 }
-#bottom-navbar .navbar-nav li a {
-	padding-top: 5px;
-	padding-bottom: 5px;
+#bottom-navbar .navbar-brand img {
+	height: 30px;
 }
 
 @media (max-width:991px) {
@@ -330,6 +320,9 @@ article.post {
 	color: #666;
 	line-height: 1.1em;
 	margin-top: 5px;
+}
+.wp-block-image img {
+	height: auto;
 }
 
 /* NAV PAGES LINKS */
