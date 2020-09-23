@@ -16,10 +16,10 @@
     "@link-color": "@brand-primary",
     "@link-hover-color": "darken(@link-color, 15%)",
     "@link-hover-decoration": "underline",
-    "@font-family-sans-serif": "\"Josefin Sans\", Helvetica, Arial, sans-serif",
-    "@font-family-serif": "Georgia, \"Times New Roman\", Times, serif",
+    "@font-family-sans-serif": "Helvetica, Arial, sans-serif",
+    "@font-family-serif": "'Vollkorn', \"Times New Roman\", Times, serif",
     "@font-family-monospace": "Menlo, Monaco, Consolas, \"Courier New\", monospace",
-    "@font-family-base": "@font-family-sans-serif",
+    "@font-family-base": "@font-family-serif",
     "@font-size-base": "16px",
     "@font-size-large": "ceil((@font-size-base * 1.25))",
     "@font-size-small": "ceil((@font-size-base * 0.85))",
@@ -408,6 +408,5 @@
   ],
   "js": [
     "collapse.js"
-  ],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=34554c89b2281f9116a3b85bcbda773a"
+  ]
 }
