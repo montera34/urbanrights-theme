@@ -23,14 +23,14 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<div class="navbar-text navbar-left"><?php _e('A project by','urbanrights'); ?></br><a href="http://zuloark.com">Zuloark</a></div>
-			<a class="navbar-brand" href="http://urbanrights.org"><img src="<?php echo URBANRIGHTS_BLOGTHEME; ?>/images/ur.png" alt="The Universal Declaration of Urban Rights" /></a>
+			<div class="navbar-text navbar-left"><?php _e('A project by','urbanrights'); ?></div>
+			<a class="navbar-brand" href="https://zuloark.com"><img src="<?php echo URBANRIGHTS_BLOGTHEME; ?>/images/zk.jpg" alt="Zuloark" /></a>
 		</div>
 		<div class="collapse navbar-collapse" id="bottom-navbar-collapse">
-			<div class="navbar-text navbar-left"><?php _e('Cooperations partners','urbanrights'); ?>:</div>
-			<ul class="nav navbar-nav navbar-left">
-				<li>Here cooperators logos.</li>
-			</ul>
+			
+			<?php if ( is_active_sidebar( 'footer-widgets' ) ) {
+				dynamic_sidebar( 'footer-widgets' );
+			} ?>
 			<?php $location = "lang";
 			if ( has_nav_menu( $location ) ) {
 				$args = array(
