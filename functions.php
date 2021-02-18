@@ -92,6 +92,10 @@ function urbanrights_setup() {
 		'default-image' => '',
 	) ) );
 	add_post_type_support( 'page', 'excerpt' );
+
+	//Image sizes
+	urbanrights_image_sizes();
+	add_filter( 'image_size_names_choose', 'urbanrights_image_sizes_names' );
 }
 endif;
 add_action( 'after_setup_theme', 'urbanrights_setup' );
@@ -123,6 +127,15 @@ function urbanrights_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer area', 'urbanrights' ),
+		'id'            => 'footer-widgets',
+		'description'   => '',
+		'before_widget' => '<div id="%1$s" class="navbar-text">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<div class="f-widget-tit">',
+		'after_title'   => '</div>',
+	) );
 }
 add_action( 'widgets_init', 'urbanrights_widgets_init' );
 
@@ -130,14 +143,25 @@ add_action( 'widgets_init', 'urbanrights_widgets_init' );
  * Enqueue scripts and styles.
  */
 function urbanrights_scripts() {
-	wp_enqueue_style( 'bootstrap-style', get_template_directory_uri(). '/bootstrap/css/bootstrap.min.css' );
-	wp_enqueue_style( 'urbanrights-style', get_stylesheet_uri(),array('bootstrap-style') );
 
-	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri(). '/bootstrap/js/bootstrap.min.js',array('jquery'),true );
-	if ( is_post_type_archive( 'declarations' ) || is_home() || is_page_template('page-declarations.php') || is_tax(array('protect','eradicate','initiate')) )
-		wp_enqueue_script( 'ur-declarations-js', get_template_directory_uri() . '/js/ur-declarations.js', array('jquery'), true );
-	if ( is_page_template( 'page-map.php' ) )
-		wp_enqueue_script( 'ur-spaces-js', get_template_directory_uri() . '/js/ur-spaces.js', array('jquery'), true );
+	if ( !is_admin() ) {
+		wp_dequeue_script('jquery');
+		wp_dequeue_script('jquery-migrate');
+		wp_enqueue_script('jquery', false, array(), NULL, true);
+//		wp_enqueue_script('jquery-migrate', false, array(), NULL, true);
+		
+		wp_dequeue_style('wp-block-library');
+		wp_dequeue_style('newsletter');
+
+	}
+	wp_dequeue_script('eio-lazy-load');
+	wp_enqueue_script('eio-lazy-load',false,array(),NULL,true);
+
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri(). '/bootstrap/js/bootstrap.min.js',array(),true );
+//	if ( is_post_type_archive( 'declarations' ) || is_home() || is_page_template('page-declarations.php') || is_tax(array('protect','eradicate','initiate')) )
+//		wp_enqueue_script( 'ur-declarations-js', get_template_directory_uri() . '/js/ur-declarations.js', array('jquery'), true );
+//	if ( is_page_template( 'page-map.php' ) )
+//		wp_enqueue_script( 'ur-spaces-js', get_template_directory_uri() . '/js/ur-spaces.js', array('jquery'), true );
 //	wp_enqueue_script( 'urbanrights-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
 //	wp_enqueue_script( 'urbanrights-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
@@ -146,12 +170,24 @@ function urbanrights_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'urbanrights_scripts' );
+add_action( 'wp_enqueue_scripts', 'urbanrights_scripts',999 );
+
+// load scripts for IE compatibility
+function urbanrights_extra_meta_tags() {
+	echo "
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	";
+}
+/* Load scripts for IE compatibility */
+add_action('wp_head','urbanrights_extra_meta_tags');
 
 // load scripts for IE compatibility
 function urbanrights_extra_scripts_styles() {
+	wp_enqueue_style('wp-block-library');
+	wp_enqueue_style('newsletter');
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri(). '/bootstrap/css/bootstrap.min.css' );
+	wp_enqueue_style( 'urbanrights', get_stylesheet_uri(),array('bootstrap') );
 	echo "
-	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -159,15 +195,14 @@ function urbanrights_extra_scripts_styles() {
 	<script src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js'></script>
 	<![endif]-->
 	";
-	if ( is_user_logged_in() ) {
-		echo "<style media='screen' type='text/css'>#top-navbar{margin-top: 32px;} html { margin-top: 113px!important;}</style>";
+	if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) {
+		echo "<style media='screen' type='text/css'>#top-navbar{margin-top: 32px !important; } html { margin-top: 93px!important !important; }</style>";
 	} else {
-		echo "<style media='screen' type='text/css'>html { margin-top: 81px!important;}</style>";
+		echo "<style media='screen' type='text/css'>html { margin-top: 65px !important; }</style>";
 
 	}
 }
-/* Load scripts for IE compatibility */
-add_action('wp_head','urbanrights_extra_scripts_styles',999);
+add_action('wp_footer','urbanrights_extra_scripts_styles');
 
 function urbanrights_favicon() {
 	echo "
@@ -179,16 +214,16 @@ add_action('wp_head','urbanrights_favicon');
 
 // custom loops for each template
 function urbanrights_custom_args_for_loops( $query ) {
-	if ( $query->query_vars['post_type'] == 'declarations' && $query->is_main_query() ) { 
+	if ( is_post_type_archive('declarations') && $query->is_main_query() ) { 
 		$query->set( 'nopaging','true');
 		$query->set( 'order','ASC');
 		$query->set( 'orderby','menu_order');
 	}
-	elseif ( $query->query_vars['post_type'] == 'sessions' && $query->is_main_query() ) { 
+	elseif ( is_post_type_archive('sessions') && $query->is_main_query() ) { 
 		$query->set( 'nopaging','true');
-		$query->set( 'orderby','meta_value_num');
-		$query->set( 'meta_key','session-date');
-		$query->set( 'order','ASC');
+//		$query->set( 'orderby','meta_value_num');
+//		$query->set( 'meta_key','session-date');
+//		$query->set( 'order','ASC');
 	}
 	return $query;
 } // END custom args for loops
@@ -206,6 +241,41 @@ function urbanrights_container_class() {
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
+
+
+/**
+ * Set up image sizes and media options
+ */
+function urbanrights_image_sizes() {
+
+	// add extra sizes
+	add_image_size( 'icon', 0, 48, false );
+	add_image_size( 'bigicon', 0, 96, false );
+	add_image_size( 'mini', 263, 0, false );
+	add_image_size( 'xsmall', 446, 0, false );
+	add_image_size( 'small', 610, 0, false );
+	add_image_size( 'xlarge', 1500, 0, false );
+
+	/* set up image sizes*/
+	update_option('post-thumbnail_size_w', 1920);
+	update_option('thumbnail_size_w', 128);
+	update_option('thumbnail_size_h', 0);
+	update_option('medium_size_w', 860);
+	update_option('medium_size_h', 0);
+	update_option('large_size_w', 1151);
+	update_option('large_size_h', 0);
+}
+
+function urbanrights_image_sizes_names( $sizes ) {
+	return array_merge( $sizes, array(
+		'icon' => __('Icon 48px','urbanrights'),
+		'bigicon' => __('Icon 96px','urbanrights'),
+		'mini' => __('Mini 263px width','urbanrights'),
+		'xsmall' => __('Extra small 446px width','urbanrights'),
+		'small' => __('Small 610px width','urbanrights'),
+		'xlarge' => __('Extra large 1500px width','urbanrights'),
+	) );
+}
 
 /**
  * Custom template tags for this theme.
@@ -225,4 +295,4 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Load Jetpack compatibility file.
  */
-require get_template_directory() . '/inc/jetpack.php';
+//require get_template_directory() . '/inc/jetpack.php';
