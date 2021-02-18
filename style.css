@@ -20,6 +20,10 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 @import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+html {
+	padding-bottom: 61px;
+}
+
 /* JOKERS */
 .row-littlemargin {
 	margin-left: -5px;
@@ -73,7 +77,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 /* NAVBARS */
 body { margin-bottom: 41px; }
 #content { margin-top: 15px;}
-.navbar-brand { padding: 5px 15px;}
+.navbar-brand { padding: 5px 15px !important;}
 .single-sessions #navbar-primary > li.menu-item-sessions > a,
 .single-post #navbar-primary > li.menu-item-news > a,
 .tax-initiate #navbar-primary > li.menu-item-declarations > a,
@@ -86,24 +90,28 @@ body { margin-bottom: 41px; }
 	margin-top: 2px;
 	margin-bottom: 2px;
 }
+.site-tit {
+	max-width: 125px;
+	line-height: 16px;
+	padding: 6px 0;
+}
+.f-widget-tit {
+	float: left;
+	margin-right: 15px;
+}
+#bottom-navbar .textwidget {
+	float: left;
+}
 
 @media (min-width:992px) {
 #navbar-primary > li:before {
 	content: "|";
 	float: left;
 	color: #fff;
-	padding: 25px 0;
-	line-height: 30px;
-	font-size: 20px;
+	padding: 17px 0;
 }
 #navbar-primary > li:first-child:before {
 	content: none;
-}
-#navbar-primary > li > a {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	margin-top: 20px;
-	margin-bottom: 20px;
 }
 #navbar-primary > li > a:after {
 	transition: all 0.2s ease 0s;
@@ -141,7 +149,7 @@ body { margin-bottom: 41px; }
 .navbar-text {
 	float: left;
 	font-size: 0.9em;
-	margin-top: 2px;
+	margin-top: 2px !important;
 	margin-bottom: 2px;
 }
 .navbar-text a {
@@ -156,7 +164,7 @@ body { margin-bottom: 41px; }
 	padding: 5px 15px;
 }
 #bottom-navbar .navbar-brand img {
-	height: 30px;
+	height: 35px;
 }
 
 @media (max-width:991px) {
@@ -273,6 +281,20 @@ article.post {
 }
 .post-featured-img img {
 	float: right;
+}
+
+/* HOME TEMPLATE */
+.sec-tit {
+	margin-top: 10rem;
+}
+.page-template-page-home .tnp-subscription {
+	margin: 0;
+}
+.ps-desc {
+	background-color: #fff;
+	border: 3px solid #000;
+	padding: 0 5px;
+	margin-bottom: 30px;
 }
 
 /* COMMENTS */

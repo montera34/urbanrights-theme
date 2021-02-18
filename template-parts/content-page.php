@@ -7,11 +7,15 @@
  * @package Urban_Rights
  */
 
+if (is_page_template() )
+	$class = ' class="hide"';
+else
+	$class = '';
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="hidden">
-		<?php the_title( '<h1>', '</h1>' ); ?>
+	<header>
+		<?php the_title( '<h1'.$class.'>', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
