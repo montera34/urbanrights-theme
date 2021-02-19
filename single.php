@@ -7,7 +7,10 @@
  * @package Urban_Rights
  */
 
-get_header(); ?>
+get_header();
+
+$pt = get_post_type();
+?>
 
 	<div id="primary" class="row">
 		<main id="main" class="col-sm-12" role="main">
@@ -15,7 +18,11 @@ get_header(); ?>
 		<?php
 		while ( have_posts() ) : the_post();
 
-			get_template_part( 'template-parts/content', get_post_format() );
+			if ( $pt == 'post')
+				get_template_part( 'template-parts/content', get_post_format() );
+			else
+				get_template_part( 'template-parts/content-single', $pt );
+
 
 			//the_post_navigation();
 

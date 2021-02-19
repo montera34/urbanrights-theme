@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying parliament sessions.
+ * Template part for displaying editions
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -14,36 +14,36 @@ $perma = get_permalink();
 // SESSION CARD
 $card_out = '';
 $card_items = array();
-// edition
-$ed = get_post_meta($post->ID,'_ps_edition',true);
-if ( !empty($ed) ) {
-	$ed_out = '<a href="'.get_permalink($ed['ID']).'">'.$ed['post_title'].'</a>';
-	$card_items[] = array(
-		'l' => __('Edition','urbanrights'),
-		'v' => $ed_out
-	);
-}
-// date
-$date = get_post_meta($post->ID,'_ps_date',true);
-$date_ts = strtotime($date);
-$card_items[] = array(
-	'l' => __('Date','urbanrights'),
-	'v' => $date
+// taxonomies
+$txs = array(
+	array(
+		'l' => __('Year','urbanrights'),
+		'n' => 'date'
+	),
+	array(
+		'l' => __('Type','urbanrights'),
+		'n' => 'ed_type'
+	),
+	array(
+		'l' => __('Status','urbanrights'),
+		'n' => 'status'
+	),
 );
-// status
-if ( $date_ts < time() ) {
-	$classes[] = "session-past";
-	$card_items[] = array(
-		'l' => __('Status','urbanrights'),
-		'v' => __('Session finished','urbanrights')
-	);
-}
-else {
-	$classes[] = "session-upcoming";
-	$card_items[] = array(
-		'l' => __('Status','urbanrights'),
-		'v' => __('Session upcoming','urbanrights')
-	);
+foreach ( $txs as $tx ) {
+
+	$terms_out = array();
+	$terms = get_the_terms($post->ID,$tx['n']);
+	if ( !is_wp_error($terms) && $terms != false ) {
+	$terms_list = array();
+	foreach ( $terms as $t ) 
+		$terms_list[] = '<a href="'.get_term_link($t,$tx['n']).'">'.$t->name.'</a>';
+	$terms_out = implode(', ',$terms_list);
+	}
+	if ( !empty($terms_out) )
+		$card_items[] = array(
+			'l' => $tx['l'],
+			'v' => $terms_out
+		);
 }
 // location
 $location_out = array();
@@ -66,20 +66,6 @@ if ( !empty($location_out) )
 		'l' => __('Location','urbanrights'),
 		'v' => implode('<br>',$location_out)
 	);
-// topics
-$topics_out = array();
-$topics = get_the_terms($post->ID,'topic');
-if ( !is_wp_error($topics) && $topics != false ) {
-	$topics_list = array();
-	foreach ( $topics as $t ) 
-		$topics_list[] = '<a href="'.get_term_link($t,'topic').'">'.$t->name.'</a>';
-	$topics_out = implode(', ',$topics_list);
-}
-if ( !empty($topics_out) )
-	$card_items[] = array(
-		'l' => __('Topics','urbanrights'),
-		'v' => $topics_out
-	);
 
 if ( ! empty($card_items) ) {
 	$card_out = '<dl class="single-card session-card">';
@@ -89,17 +75,29 @@ if ( ! empty($card_items) ) {
 	$card_out .= '</dl>';
 }
 
-// video
-$vid = get_post_meta($post->ID,'_ps_video',true);
-$vid_out = '';
-if ( !empty($vid) )
-	$vid_out = '<div class="single-video session-video">'.apply_filters('the_content',$vid).'</div>';
+// Sessions
+$sessions = get_post_meta($post->ID,'_ed_session');
+$sessions_out = '';
+if ( !empty($sessions) ) {
+	$sessions_out = '<aside><h2>'.__('Sessions in this edition','urbanrights').'</h2>';
+	foreach ( $sessions as $s ) {
+		$s_perma = get_permalink($s['ID']);
+		$s_img_out = ( has_post_thumbnail($s['ID'] ) )  ? '<figure><img src="'.get_the_post_thumbnail_url($s['ID'],'small').'"></figure>' : '';
+		$s_name = $s['post_title'];
+
+		$sessions_out .= '<div class="rel-session">
+			'.$s_img_out.'
+			<div class="rel-session-name"><a href="'.$s_perma.'">'.$s_name.'</a></div>
+		</div>';
+	}
+	$sessions_out .= '</aside>';
+}
 
 // Urban beings
-$beings_roles = get_post_meta($post->ID,'_ps_rel_rol_bei');
+$beings_roles = get_post_meta($post->ID,'_ed_rel_rol_bei');
 $beings_roles_out = '';
 if ( !empty($beings_roles) ) {
-	$beings_roles_out = '<aside><h2>'.__('UR_NET. Urban beings in this session','urbanrights').'</h2>';
+	$beings_roles_out = '<aside><h2>'.__('UR_NET. Urban beings in this edition','urbanrights').'</h2>';
 	foreach ( $beings_roles as $br ) {
 		$b = get_post_meta($br['ID'],'_rrb_being',true);
 		$b_perma = get_permalink($b['ID']);
@@ -133,7 +131,7 @@ if ( !empty($beings_roles) ) {
 	<div class="single-content session-content">
 		<?php the_content(); ?>
 	</div><!-- .post-content -->
-	<?php echo $vid_out; ?>
+	<?php echo $sessions_out; ?>
 	<?php echo $beings_roles_out; ?>
 
 </article><!-- #post-## -->
