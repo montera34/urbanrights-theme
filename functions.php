@@ -296,3 +296,8 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 //require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Load WordPress core functions redefinitions or modifications.
+ */
+require get_template_directory() . '/inc/wordpress-redefinitions.php';
