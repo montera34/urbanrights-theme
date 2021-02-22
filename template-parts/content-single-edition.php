@@ -102,9 +102,9 @@ if ( !empty($beings_roles) ) {
 		$b = get_post_meta($br['ID'],'_rrb_being',true);
 		$b_perma = get_permalink($b['ID']);
 		$b_img_out = ( has_post_thumbnail($b['ID'] ) )  ? '<figure><img src="'.get_the_post_thumbnail_url($b['ID'],'small').'"></figure>' : '';
-		$b_fname = get_post_meta($b['ID'],'_ur_firstname',true);
-		$b_lname = get_post_meta($b['ID'],'_ur_lastame',true);
-		$b_name = ( !empty($b_fname) || !empty($lname) ) ? $b_fname.' '.$b_lname : $b['post_title'];
+		$b_fname = get_post_meta($b['ID'],'_b_firstname',true);
+		$b_lname = get_post_meta($b['ID'],'_b_lastname',true);
+		$b_name = ( !empty($b_fname) || !empty($b_lname) ) ? $b_fname.' '.$b_lname : $b['post_title'];
 		$roles = get_the_terms($br['ID'],'role');
 		$roles_list = array();
 		foreach( $roles as $r ) {
