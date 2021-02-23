@@ -8,7 +8,6 @@
  */
 
 $classes = array('main-space');
-//$subtitle = get_post_meta($post->ID,'session-subtitle',true);
 $perma = get_permalink();
 
 $img_out = ( has_post_thumbnail($post->ID ) )  ? '<figure><img src="'.get_the_post_thumbnail_url($post->ID,'small').'"></figure>' : '';
@@ -16,7 +15,7 @@ $fname = get_post_meta($post->ID,'_b_firstname',true);
 $lname = get_post_meta($post->ID,'_b_lastname',true);
 $name = ( !empty($fname) || !empty($lname) ) ? $fname.' '.$lname : get_the_title();
 
-// SESSION CARD
+// CARD
 $card_out = '';
 $card_items = array();
 // type
@@ -31,6 +30,17 @@ if ( !empty($types_out) )
 	$card_items[] = array(
 		'l' => __('Urban being type','urbanrights'),
 		'v' => implode('<br>',$types_out)
+	);
+// website
+$site = get_post_meta($post->ID,'_b_website',true);
+$site_out = '';
+if ( !empty($site) ) {
+	$site_out = '<a href="'.$site.'">'.$site.'</a>';
+}
+if ( !empty($site_out) )
+	$card_items[] = array(
+		'l' => __('Website','urbanrights'),
+		'v' => $site_out
 	);
 // organization
 $orgs = get_post_meta($post->ID,'_b_org');
