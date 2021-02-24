@@ -212,23 +212,6 @@ function urbanrights_favicon() {
 }
 add_action('wp_head','urbanrights_favicon');
 
-// custom loops for each template
-function urbanrights_custom_args_for_loops( $query ) {
-	if ( is_post_type_archive('declarations') && $query->is_main_query() ) { 
-		$query->set( 'nopaging','true');
-		$query->set( 'order','ASC');
-		$query->set( 'orderby','menu_order');
-	}
-	elseif ( is_post_type_archive('sessions') && $query->is_main_query() ) { 
-		$query->set( 'nopaging','true');
-//		$query->set( 'orderby','meta_value_num');
-//		$query->set( 'meta_key','session-date');
-//		$query->set( 'order','ASC');
-	}
-	return $query;
-} // END custom args for loops
-add_filter( 'pre_get_posts', 'urbanrights_custom_args_for_loops' );
-
 function urbanrights_container_class() {
 	$class = "class='container'";
 	if ( is_page_template('page-map.php') )

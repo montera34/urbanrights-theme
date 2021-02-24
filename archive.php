@@ -7,7 +7,10 @@
  * @package Urban_Rights
  */
 
-get_header(); ?>
+get_header();
+
+$pt = get_post_type();
+?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -31,7 +34,10 @@ get_header(); ?>
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+				if ( $pt == 'post')
+					get_template_part( 'template-parts/content', get_post_format() );
+				else
+					get_template_part( 'template-parts/content-list', $pt );
 
 			endwhile;
 
@@ -47,5 +53,4 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();

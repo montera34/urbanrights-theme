@@ -11,7 +11,7 @@ $classes = array('main-space');
 //$subtitle = get_post_meta($post->ID,'session-subtitle',true);
 $perma = get_permalink();
 
-// SESSION CARD
+// EDITION CARD
 $card_out = '';
 $card_items = array();
 // taxonomies
